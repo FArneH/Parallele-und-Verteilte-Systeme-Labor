@@ -1,0 +1,21 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "3000:3000"       # Mappt den Container-Port 3000 auf den lokalen Port 3000
+    networks:
+      - my-network
+
+  frontend:
+    image: frontend-container-image    # Der vom Dozenten bereitgestellte Frontend-Container
+    ports:
+      - "8080:80"       # Beispiel, Port-Mapping für das Frontend
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
