@@ -1,20 +1,18 @@
-# Verwende den offiziellen Node.js-Image als Basis
-FROM node:14
+# Verwende ein offizielles Node.js-Image als Basis
+FROM node:18
 
-# Setze das Arbeitsverzeichnis
+# Arbeitsverzeichnis erstellen und wechseln
 WORKDIR /app
 
-# Kopiere package.json und package-lock.json
+# Package-Dateien kopieren und Abhängigkeiten installieren
 COPY package*.json ./
-
-# Installiere die Abhängigkeiten
 RUN npm install
 
-# Kopiere den Rest der Anwendung
+# Den Rest des Codes kopieren
 COPY . .
 
-# Exponiere den Port, den der Server verwendet
+# Port für den Express-Server (z. B. 3000)
 EXPOSE 3000
 
-# Starte die Anwendung
-CMD ["npm", "start"]
+# Startbefehl für den Express-Server
+CMD ["node", "server.js"]

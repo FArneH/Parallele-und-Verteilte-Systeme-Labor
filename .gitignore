@@ -1,0 +1,44 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+*.log
+
+# Docker
+*.dockerfile
+Dockerfile*
+docker-compose.override.yml
+.docker/
+
+# Umgebungsvariablen
+.env
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-spezifische Dateien
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+
+# MacOS system files
+*.swp
+
+# Build-Verzeichnisse
+build/
+dist/
+
+# PostgreSQL-Datenbankdaten (falls lokal verwendet)
+pg_data/
+
+# Test-/Coverage-Verzeichnisse
+coverage/

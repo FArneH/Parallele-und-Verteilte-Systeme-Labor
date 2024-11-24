@@ -1,21 +1,39 @@
-version: '3'
+version: '3.8'
+
 services:
+  shoppingdb:
+    image: postgres
+    environment:
+      POSTGRES_USER: hse24
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: shoppingdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
   backend:
     build:
       context: ./backend
+    environment:
+      DATABASE_URL: postgres://hse24:password@shoppingdb:5432/shoppingdb  
+      PORT: 8080
+    depends_on:
+      - shoppingdb
     ports:
-      - "3000:3000"       # Mappt den Container-Port 3000 auf den lokalen Port 3000
-    networks:
-      - my-network
+      - "8080:8080"  
+    command: "node server.js" 
 
   frontend:
-    image: frontend-container-image    # Der vom Dozenten bereitgestellte Frontend-Container
+    image: maeddes/frontendflask:hse24
+    build:
+      context: ./frontend
+    environment:
+      API_URL: "http://backend:8080/api/shopping"
     ports:
-      - "8080:80"       # Beispiel, Port-Mapping für das Frontend
-    networks:
-      - my-network
+      - "5000:5000"
+    depends_on:
+      - backend
 
-networks:
-  my-network:
-    driver: bridge
-
+volumes:
+  db_data:
