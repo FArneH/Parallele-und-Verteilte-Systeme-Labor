@@ -20,8 +20,6 @@ id: Eindeutige Identifikation des Items (Primärschlüssel).
 name: Der Name des Items (z. B. "Apfel").
 amount: Die Anzahl des Items (z. B. 3).
 SQL zum Erstellen der Tabelle:
-sql
-Code kopieren
 CREATE TABLE IF NOT EXISTS shopping_items (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
