@@ -35,7 +35,7 @@ backend: Der Express.js Backend-Container, der mit der Datenbank kommuniziert.
 frontend: Der Container für das Frontend.
 
 ### Befehle
-- ** Build Docker-Container neu: docker-compose build
-- ** Docker-Container starten: docker-compose up
+- Build Docker-Container neu: docker-compose build
+- Docker-Container starten: docker-compose up
 
 
