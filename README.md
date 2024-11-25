@@ -20,11 +20,13 @@ id: Eindeutige Identifikation des Items (Primärschlüssel).
 name: Der Name des Items (z. B. "Apfel").
 amount: Die Anzahl des Items (z. B. 3).
 SQL zum Erstellen der Tabelle:
+### SQL zum Erstellen der Tabelle:
+```sql
 CREATE TABLE IF NOT EXISTS shopping_items (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     amount INTEGER NOT NULL
-);
+);**```**
 Initialisierung der Datenbank: Beim Starten des Backends wird die Datenbank automatisch mit der notwendigen Tabelle initialisiert, falls sie noch nicht existiert. Die Tabelle wird mit den Spalten id, name und amount erstellt.
 
 ## Docker-Konfiguration
