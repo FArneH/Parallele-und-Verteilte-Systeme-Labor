@@ -11,7 +11,6 @@ Das Backend ist als RESTful API aufgebaut und bietet folgende Endpunkte:
 - **DELETE /api/items/:name** – Löscht ein Item aus der Datenbank.
 
 **Befehl zum Starten des Backends:**
-```bash
 node server.js
 
 ## DB - PostgressSQL
