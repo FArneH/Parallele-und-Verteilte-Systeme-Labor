@@ -1,19 +1,18 @@
 # Parallele-und-Verteilte-Systeme-Labor
 
-Dieses Repository enthält die Implementierung für das Labor Parallele und Verteilte Systeme. 
-Es beinhaltet das Backend (Express.js) und die Datenbankkonfiguration (mit PostgreSQL).
+Dieses Repository enthält die Implementierung für das Labor Parallele und Verteilte Systeme. Es beinhaltet das Backend (Express.js) und die Datenbankkonfiguration (mit PostgreSQL).
 
-## Backend - Implementiert Express.js.
+## Backend - Express.js
 Das Backend ist als RESTful API aufgebaut und bietet folgende Endpunkte:
 
-GET /api/items – Gibt alle Artikel (shopping_items) aus der Datenbank zurück.
-POST /api/items – Fügt ein neues Item in die Datenbank hinzu.
-PUT /api/items/:name – Aktualisiert die Menge eines vorhandenen Artikels.
-DELETE /api/items/:name – Löscht ein Item aus der Datenbank.
+- **GET /api/items** – Gibt alle Artikel (shopping_items) aus der Datenbank zurück.
+- **POST /api/items** – Fügt ein neues Item in die Datenbank hinzu.
+- **PUT /api/items/:name** – Aktualisiert die Menge eines vorhandenen Artikels.
+- **DELETE /api/items/:name** – Löscht ein Item aus der Datenbank.
 
-### Befehle
-backend start: node server.js
-
+**Befehl zum Starten des Backends:**
+```bash
+node server.js
 
 ## DB - PostgressSQL
 Die Datenbank ist eine PostgreSQL-Datenbank, die über das pg-Modul in Node.js angesprochen wird. Die Daten werden in einer Tabelle namens shopping_items gespeichert, die die folgenden Spalten enthält:
