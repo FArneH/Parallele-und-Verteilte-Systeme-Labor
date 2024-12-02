@@ -5,10 +5,10 @@ Dieses Repository enthält die Implementierung für das Labor Parallele und Vert
 ## Backend - Express.js
 Das Backend ist als RESTful API aufgebaut und bietet folgende Endpunkte:
 
-- **GET ** – Gibt alle Artikel (shopping_items) aus der Datenbank zurück.
-- **POST ** – Fügt ein neues Item in die Datenbank hinzu.
-- **PUT ** – Aktualisiert die Menge eines vorhandenen Artikels.
-- **DELETE ** – Löscht ein Item aus der Datenbank.
+- GET – Gibt alle Artikel (shopping_items) aus der Datenbank zurück.
+- POST – Fügt ein neues Item in die Datenbank hinzu.
+- PUT – Aktualisiert die Menge eines vorhandenen Artikels.
+- DELETE – Löscht ein Item aus der Datenbank.
 
 **Befehl zum Starten des Backends:**
 node server.js
