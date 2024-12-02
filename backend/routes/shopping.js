@@ -14,7 +14,6 @@ router.get('/', async (req, res) => {
 
 // POST: Neues Item hinzufügen
 router.post('/', async (req, res) => {
-
   const { name, amount } = req.body;
 
   if (!name || typeof amount !== 'number') {
@@ -22,15 +21,35 @@ router.post('/', async (req, res) => {
   }
 
   try {
-    const result = await pool.query(
-      'INSERT INTO shopping_items (name, amount) VALUES ($1, $2) RETURNING *',
-      [name, amount]
+    // Zuerst nach dem Item suchen
+    const findItemResult = await pool.query(
+      'SELECT * FROM shopping_items WHERE name = $1',
+      [name]
     );
-    res.status(201).json(result.rows[0]);
+
+    // Wenn das Item existiert, den amount aktualisieren (hinzufügen)
+    if (findItemResult.rows.length > 0) {
+      // Item gefunden, also den amount aktualisieren (addieren)
+      const updateResult = await pool.query(
+        'UPDATE shopping_items SET amount = amount + $1 WHERE name = $2 RETURNING *',
+        [amount, name]
+      );
+      return res.status(200).json(updateResult.rows[0]);
+    } else {
+      // Item existiert nicht, also fügen wir es neu hinzu
+      const insertResult = await pool.query(
+        'INSERT INTO shopping_items (name, amount) VALUES ($1, $2) RETURNING *',
+        [name, amount]
+      );
+      return res.status(201).json(insertResult.rows[0]);
+    }
+
   } catch (err) {
     res.status(500).json({ message: 'Fehler beim Hinzufügen des Items: ' + err.message });
   }
 });
+
+
 
 // PUT: Item aktualisieren
 router.put('/:name', async (req, res) => {
