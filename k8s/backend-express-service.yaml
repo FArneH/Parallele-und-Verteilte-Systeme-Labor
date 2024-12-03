@@ -1,0 +1,15 @@
+#backend-express-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-express-js-service
+  labels:
+    app: backend-express-js
+spec:
+  type: NodePort  # Oder ClusterIP, wenn nur intern erreichbar
+  selector:
+    app: backend-express-js  # Muss mit den Labels im Deployment übereinstimmen
+  ports:
+    - protocol: TCP
+      port: 3000        # Port, über den der Service angesprochen wird
+      targetPort: 3000   # Port des Containers in deinem Deployment

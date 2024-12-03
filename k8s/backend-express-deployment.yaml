@@ -1,0 +1,23 @@
+#baclend-express-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-express-js
+  labels:
+    app: backend-express-js  # Dies ist das Label, das sowohl im Deployment als auch im Service verwendet werden muss
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-express-js  # Diese Labels müssen mit denen des Services übereinstimmen
+  template:
+    metadata:
+      labels:
+        app: backend-express-js  # Auch hier muss das Label das gleiche sein
+    spec:
+      containers:
+      - name: backend-express-js
+        image: arhoit00/backend-express-js:latest
+        env:
+        - name: EXPRESS_DATASOURCE_URL
+          value: jdbc:postgresql://shoppingdb:5432/shoppingdb
