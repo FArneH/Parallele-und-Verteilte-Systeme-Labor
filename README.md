@@ -34,6 +34,15 @@ shoppingdb: Der PostgreSQL-Datenbank-Container.
 backend: Der Express.js Backend-Container, der mit der Datenbank kommuniziert.
 frontend: Der Container für das Frontend.
 
+## Kubernetes
+kubectl apply -f postgres-deployment.yaml
+kubectl apply -f shoppingdb-service.yaml
+kubectl apply -f backend-express-deployment.yaml
+kubectl apply -f backend-express-service.yaml
+
+minikube service backend-express-js-service --url
+
+
 ### Befehle
 - Build Docker-Container neu: docker-compose build
 - Docker-Container starten: docker-compose up
